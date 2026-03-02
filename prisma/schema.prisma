@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("POSTGRES_URL")
+}
+
+model Goal {
+  id        String   @id @default(cuid())
+  title     String
+  deadline  DateTime
+  createdAt DateTime @default(now())
+}
+
+model Phase {
+  id        String   @id @default(cuid())
+  title     String
+  theme     String?
+  tasks     Task[]
+}
+
+model Task {
+  id        String   @id @default(cuid())
+  phaseId   String
+  title     String
+  isDone    Boolean  @default(false)
+  category  String?
+  phase     Phase    @relation(fields: [phaseId], references: [id])
+}
+
+model DailyLog {
+  id        String   @id @default(cuid())
+  date      DateTime @default(now())
+  completed String
+  struggled String
+  worries   String
+}
