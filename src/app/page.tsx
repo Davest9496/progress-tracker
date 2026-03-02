@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { prisma } from "@/lib/db";
 import { isAdmin } from "@/lib/auth";
 import { Progress } from "@/components/ui/progress";
