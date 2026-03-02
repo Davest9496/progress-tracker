@@ -15,7 +15,7 @@ const connectionString =
 const adapter = new PrismaPg({ connectionString });
 const prisma = new PrismaClient({ adapter });
 
-const TRACKER_PATH = path.join(__dirname, "../../Dave_Progress_Tracker.md");
+const TRACKER_PATH = path.join(process.env.HOME ?? "/Users/davest", "Desktop/progress-tracker/Dave_Progress_Tracker.md");
 
 const goals = [
     { title: "MS-900 Microsoft 365 Fundamentals", deadline: new Date("2026-03-10") },
